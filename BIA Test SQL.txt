@@ -1,0 +1,29 @@
+------ 1) How to join the two tables together
+SELECT
+A.Student_SK,
+Ethnicity,
+Gender,
+Region,
+Course,
+Grade,
+Success
+FROM StudentLists A
+left Join Enrollment B
+ON A.A.Student_SK = B.Student_SK
+
+---------2) How many total successful students were there in 21EW5 (by current learner segment)?
+SELECT 
+CurrentlearnerSegment,
+Count (Distinct A.Student_SK)
+FROM StudentLists A
+left Join Enrollment B
+ON A.A.Student_SK = B.Student_SK
+WHERE Term = "21EW5" AND Success = 1
+
+
+--------3) Which course has the highest course average grade in 21EW6?
+SELECT Top 1
+Course,
+CourseAvrageGrade
+FROM  Enrollment 
+WHERE Term = "21EW6" 
